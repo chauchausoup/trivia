@@ -10,11 +10,13 @@ app.get("/home", (req, res) => {
   res.sendFile(__dirname + "/static/home.html");
 });
 
-app.get("/setter", (req, res) => {
+app.get("/setter/:sId", (req, res) => {
+  console.log(req.params.sId)
   res.sendFile(__dirname + "/static/questions.html");
 });
 
-app.get("/answerer", (req, res) => {
+app.get("/answerer/:aId", (req, res) => {
+  console.log(req.params.aId)
   res.sendFile(__dirname + "/static/answer.html");
 });
 
