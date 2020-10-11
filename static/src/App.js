@@ -22,13 +22,13 @@ function App() {
       <HomePage/>
     </div>
      </Route>
-     <Route exact path="/mcq">
+     <Route path="/mcq">
        <Chooser/>
      </Route>
-     <Route exact path="/mcq/form">
+     <Route path="/mcq/form">
        <Questions/>
      </Route>
-     <Route exact path="/mcq/answer">
+     <Route path="/mcq/answer">
        <Answers/>
      </Route>
    </Switch>

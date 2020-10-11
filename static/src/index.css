@@ -13,13 +13,14 @@ code {
 }
 
 
-.site-page-header {
-  border: 1px solid rgb(235, 237, 240);
-}
-
 .site-page-footer{
   background-color: black;
   color: white;
+}
+
+#btn{
+  height: 40px;
+  width: 200px;
 }
 
 /* .setter-button{
