@@ -1,1 +1,0 @@
-/* also known as the individual mobile client page */
