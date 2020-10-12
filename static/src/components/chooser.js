@@ -7,12 +7,17 @@ import {
   Link
 } from "react-router-dom";
 
+
 import Questions from "./questions";
 import Answers from "./answers";
+import Head from './head';
+
 
 function Choose() {
+ 
   return (
     <div>
+   <Head/>
     <p>Please Select a mode.</p>
       <Link to="/mcq/form">
         <Button default>Setter</Button>

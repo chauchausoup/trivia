@@ -1,19 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
-  useHistory,
+  Link
 } from "react-router-dom";
 import "antd/dist/antd.css";
 import "../index.css";
 import Chooser from "./chooser";
+import {Carousel, Button,PageHeader, Layout,Modal} from "antd";
+import Head from "./head";
 
-import {Carousel, Button, Layout} from "antd";
-const {Header,Footer} = Layout;
-
-
+const {Footer} = Layout;
 
 const contentStyle = {
   height: "60vh",
@@ -23,23 +21,16 @@ const contentStyle = {
   background: "#364d79",
 };
 
-const header={
-
-  color: "white"
-
-}
-
 const HomePage = () => {
+
+
   function handleCommingSoon() {
     alert("Comming Soon... Please try other features...");
   }
+
   return (
     <div className="homepage">
-    <Layout>
-
-   
-      <Header className="site-page-header" style={header}>Trivia</Header>
-
+    <Head/>
       <Carousel effect="fade" autoplay>
         <div>
           <h1 style={contentStyle}>Trivia : Where minds come together...</h1>
@@ -71,7 +62,7 @@ const HomePage = () => {
       
       <br/>
       
-
+      <Layout>
       <Footer className="site-page-footer" >All rights reserved</Footer>
       </Layout>
     </div>
