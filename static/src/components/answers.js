@@ -1,13 +1,84 @@
-import React from 'react'
-import Head from './head'
+import React, { useState } from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect,
+  useHistory,
+  useLocation,
+} from "react-router-dom";
+
+import Chooser from "./chooser";
+import {tokenArray} from '../data/tkn'
 
 export default function Answers() {
-    return (
-        <div>
-            <Head/>
-            <input type="text"/>
-            <input type="button" value="Go"/>
+  return (
+    <div>
+      <Router>
+        <Switch>
+          <Route exact path="/mcq/" component={Chooser} />
+          <Route exact path="/mcq/answer/" component={Tokener} />
+          <Route path="/mcq/answer/:token/form2" component={Form2} />
+        </Switch>
+      </Router>
+    </div>
+  );
+}
 
-        </div>
-    )
+function Form2() {
+  var history = useHistory();
+
+  const [input, setInput] = useState("");
+
+  const handleInput = (e) => {
+    setInput(e.target.value);
+  };
+
+  const handleInputSubmission = () => {
+    //this data needs to go to the real time socket
+    console.log(input);
+    history.push(`/mcq`);
+  };
+
+  return (
+    <div>
+      <p>Answer:</p>
+      <input type="text" onChange={handleInput} />
+      <br />
+      <input type="button" value="Go" onClick={handleInputSubmission} />
+    </div>
+  );
+}
+
+function Tokener() {
+  var history = useHistory();
+
+  const [value, setValue] = useState("");
+  const [flag, setFlag] = useState(true);
+
+  const tokenValidator = () => {
+    //it checks if the token is valid or not
+    //if the token is valid then it shows
+    
+    if (tokenArray.includes(value)) {
+      setFlag(false);
+      console.log("yeah");
+      history.push(`/mcq/answer/${value}/form2`);
+    }
+  };
+  const inputChange = (e) => {
+    /** some input is changed while inserting token */
+    setValue(e.target.value);
+    
+  };
+
+  return (
+    <div>
+      <p>Please insert the token given by your host:</p>
+      <input type="text" onChange={inputChange} />
+      <br />
+      <input type="button" value="Go" onClick={tokenValidator} />
+    </div>
+  );
 }
