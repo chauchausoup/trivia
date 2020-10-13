@@ -10,7 +10,7 @@ import {
 } from "react-router-dom";
 
 import Chooser from "./chooser";
-import {tokenArray} from '../data/tkn'
+import { tokenArray } from "../data/tkn";
 
 export default function Answers() {
   return (
@@ -60,7 +60,7 @@ function Tokener() {
   const tokenValidator = () => {
     //it checks if the token is valid or not
     //if the token is valid then it shows
-    
+
     if (tokenArray.includes(value)) {
       setFlag(false);
       console.log("yeah");
@@ -70,7 +70,6 @@ function Tokener() {
   const inputChange = (e) => {
     /** some input is changed while inserting token */
     setValue(e.target.value);
-    
   };
 
   return (

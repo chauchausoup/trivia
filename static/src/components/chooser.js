@@ -1,24 +1,16 @@
 import React from "react";
 import { Button } from "antd";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
-
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import Questions from "./questions";
 import Answers from "./answers";
-import Head from './head';
-
+import Head from "./head";
 
 function Choose() {
- 
   return (
     <div>
-   <Head/>
-    <p>Please Select a mode.</p>
+      <Head />
+      <p>Please Select a mode.</p>
       <Link to="/mcq/form">
         <Button default>Setter</Button>
       </Link>
