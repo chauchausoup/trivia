@@ -1,17 +1,16 @@
 import React from 'react'
 import Head from './head'
+import {tokenGenerator} from '../algo/Random'
 
 export default function Questions() {
     function checkLogin(){
         //if login then ok gets the token id for users to follow up
         //if not then Shows up the modal of antd to login for the user
         //verify the questions
-
+        console.log()
     }
 
-    function tokenGenerator(){
-        
-    }
+   
     return (
 
         <div>

@@ -4,16 +4,17 @@ import { GoogleLogin } from 'react-google-login';
  
 const responseGoogle = (response) => {
   console.log(response);
+ 
 }
  
-export default function Authen() {
+export default function Authen(props) {
     return (
         <div>
              <GoogleLogin
                 clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
                 buttonText="Login"
-                onSuccess={responseGoogle}
-                onFailure={responseGoogle}
+                onSuccess={()=>{}}
+                onFailure={()=>{}}
                 cookiePolicy={'single_host_origin'}
             />
         </div>
