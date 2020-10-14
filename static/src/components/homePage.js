@@ -47,18 +47,18 @@ const HomePage = () => {
         <Button id = "btn">MCQ</Button>
       </Link>
       <br/>
-      <Link>
+      
       <Button  onClick={handleCommingSoon} id="btn">
         Fill ins..
       </Button>
-      </Link>
+      
       <br/>
 
-      <Link>
+      
       <Button onClick={handleCommingSoon} id = "btn">
         Gengiz Khan
       </Button>
-      </Link>
+      
       
       <br/>
       

@@ -5,7 +5,7 @@ export const LoginProvider=(props)=>{
     const [isLoggedIn, setIsLoggedIn] = useState(false);
    
     return(
-        <LoginContext.Provider value={[isLoggedIn,setIsLoggedIn]}>
+        <LoginContext.Provider value={[isLoggedIn,setIsLoggedIn]} key={Math.random}>
             {props.children}
         </LoginContext.Provider>
     )
