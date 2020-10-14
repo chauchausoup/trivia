@@ -5,10 +5,13 @@ import { LoginContext } from "../context/LoginContext";
 import { useHistory } from "react-router-dom";
 
 //import { tokenGenerator } from "../algo/Random";
+import io from 'socket.io-client';
 
 
+const ENDPOINT = "localhost:5000"
 
 
+let socket=io(ENDPOINT);
 
 export default function Questions() {
   var history = useHistory();
@@ -20,6 +23,7 @@ const [isLoggedIn, setIsLoggedIn] = useContext(LoginContext);
   function textAreaChangeHandler(e) {
     e.preventDefault();
     setTextAreaValue(e.target.value);
+    //console.log(textAreaValue);
   }
 
   function checkLogin() {
@@ -27,9 +31,17 @@ const [isLoggedIn, setIsLoggedIn] = useContext(LoginContext);
     //if not then Shows up the modal of antd to login for the user
     //verify the questions
     if (localStorage.getItem('setter')) {
-      console.log(textAreaValue);
+      
       history.push(`/mcq/`);
       //console.log(tokenArray)
+      var arrayValue =textAreaValue.split(/\n/);
+
+      console.log(arrayValue) //this value will be going to the screen one by one
+      /* to screen */
+      socket.emit('questions',arrayValue);
+
+      
+
       
     } else {
       alert("Please login !");

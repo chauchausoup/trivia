@@ -8,6 +8,7 @@ import Chooser from "./components/chooser";
 import Questions from "./components/questions";
 import Answers from "./components/answers";
 import {LoginProvider} from "./context/LoginContext";
+import Screen from './components/screen';
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
             <div className="App">
               <HomePage />
             </div>
+          </Route>
+          <Route path="/screen">
+            <Screen/>
           </Route>
           <Route path="/mcq">
             <Chooser />

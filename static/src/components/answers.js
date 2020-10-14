@@ -12,6 +12,10 @@ import {
 import Chooser from "./chooser";
 import { tokenArray } from "../data/tkn";
 
+import io from "socket.io-client";
+const ENDPOINT = "localhost:5000";
+let socket = io(ENDPOINT);
+
 export default function Answers() {
   return (
     <div>
@@ -37,8 +41,9 @@ function Form2() {
 
   const handleInputSubmission = () => {
     //this data needs to go to the real time socket
-    console.log(input);
     history.push(`/mcq`);
+    console.log(input); // input goes to the screen
+    socket.emit("answer", input);
   };
 
   return (
@@ -66,6 +71,7 @@ function Tokener() {
       console.log("yeah");
       history.push(`/mcq/answer/${value}/form2`);
     }
+    //here basically answers no with single step data goes to screen
   };
   const inputChange = (e) => {
     /** some input is changed while inserting token */
