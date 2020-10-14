@@ -4,13 +4,18 @@ import { LoginContext } from "../context/LoginContext";
 
 import { useHistory } from "react-router-dom";
 
-import { tokenArray } from "../data/tkn";
+//import { tokenGenerator } from "../algo/Random";
+
+
+
+
 
 export default function Questions() {
   var history = useHistory();
   const [textAreaValue, setTextAreaValue] = useState("");
+//const [showToken,setShowToken] = useState(false);
 
-  const [isLoggedIn, setIsLoggedIn] = useContext(LoginContext);
+const [isLoggedIn, setIsLoggedIn] = useContext(LoginContext);
 
   function textAreaChangeHandler(e) {
     e.preventDefault();
@@ -24,8 +29,8 @@ export default function Questions() {
     if (localStorage.getItem('setter')) {
       console.log(textAreaValue);
       history.push(`/mcq/`);
-      //token generator
-      //console.log(tokenArray);
+      //console.log(tokenArray)
+      
     } else {
       alert("Please login !");
     }
@@ -34,6 +39,7 @@ export default function Questions() {
   return (
     <div>
       <Head />
+
       <p>
         Please type your questions ending in "?"{" "}
         <strong>(one line each)</strong>
@@ -50,3 +56,4 @@ export default function Questions() {
     </div>
   );
 }
+
