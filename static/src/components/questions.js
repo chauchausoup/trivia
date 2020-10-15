@@ -36,9 +36,9 @@ export default function Questions() {
       console.log(arrayValue); //this value will be going to the screen one by one
       /* to screen */
       var qValue={
-        personalInfo:JSON.parse(localStorage.getItem('personalInfo')),
-        questions:arrayValue
-              }
+        "personalInfo":JSON.parse(localStorage.getItem('personalInfo')),
+        "questions":arrayValue
+              };
       socket.emit("questions", JSON.stringify(qValue));
       
     } else {
