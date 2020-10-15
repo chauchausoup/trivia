@@ -43,7 +43,11 @@ function Form2() {
     //this data needs to go to the real time socket
     history.push(`/mcq`);
     console.log(input); // input goes to the screen
-    socket.emit("answer", input);
+    var aValue={
+      personalInfo:JSON.parse(localStorage.getItem('personalInfo')),
+      answer:input
+    }
+    socket.emit("answer", JSON.stringify(aValue));
   };
 
   return (

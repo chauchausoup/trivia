@@ -18,6 +18,8 @@ export default function Authen() {
       setIsLoggedIn(true);
       setAccessToken(response.accessToken);
       localStorage.setItem('setter',response.tokenId)
+      localStorage.setItem('personalInfo',JSON.stringify(response.profileObj))
+     
     }
   };
 
@@ -26,6 +28,7 @@ export default function Authen() {
     setAccessToken("");
     console.log(response)
     localStorage.removeItem('setter');
+    localStorage.removeItem('personalInfo')
     window.location.reload()
   };
 

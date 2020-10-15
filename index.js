@@ -12,14 +12,14 @@ app.use(router);
 io.on("connection", (socket) => {
   console.log(`user is connected`);
 
-  socket.on("questions", (arrayValue) => {
-    console.log(arrayValue);
-    io.sockets.emit("screenQs", arrayValue);
+  socket.on("questions", (qValue) => {
+    console.log(qValue);
+    io.sockets.emit("screenQs", qValue);
   });
 
-  socket.on("answer", (input) => {
-    console.log(input);
-    io.sockets.emit("screenAns", input);
+  socket.on("answer", (aValue) => {
+    console.log(aValue);
+    io.sockets.emit("screenAns", aValue);
   });
 
   socket.on("disconnect", () => {

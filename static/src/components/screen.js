@@ -1,45 +1,88 @@
+import { Button } from "antd";
 import React, { useEffect, useState } from "react";
 import io from "socket.io-client";
 const ENDPOINT = "http://localhost:5000";
 let socket = io(ENDPOINT);
 
 export default function Screen() {
-  const [question, setQuestion] = useState([]);
-  const [answer, setAnswer] = useState("");
+
+  const [qValue, setQuestion] = useState({personalInfo:{},questions:[]});
+  var [questions,setQuestions]=useState(qValue.questions);
+  var [renderQuestion,setRenderQuestion]=useState("")
+  var [counter,setCounter]=useState(questions.length-1)
+
+
+  const [aValue, setAnswer] = useState({personalInfo:{},answer:""});
 
   useEffect(() => {
     socket.on("screenAns", (input) => {
-      setAnswer(input);
+      setAnswer(JSON.parse(input));
     });
-    console.log(answer);
-  }, [answer]);
+    console.log(aValue);
+  }, [aValue]);
 
   useEffect(() => {
     socket.on("screenQs", (arrayValue) => {
-      setQuestion(arrayValue);
+      setQuestion(prevState=>({
+          ...prevState,
+          personalInfo:JSON.parse(arrayValue).personalInfo,
+          questions:JSON.parse(arrayValue).questions
+      }));
     });
-    console.log(question);
-  }, [question]);
+    console.log((qValue));
+  }, [qValue]);
 
+console.log(renderQuestion)
+
+function nextQuestion(){
+
+/*   console.log(qValue.questions)
+  console.log(counter)
+  console.log(questions)
+  console.log(renderQuestion) */
+
+  setQuestions(questions.splice(0,1))
+  setRenderQuestion(questions[0])
+  setCounter(counter--)
+  
+}
   return (
     <div>
-      <p>this is screen</p>
-      {question.map((qs) => {
-        return (
-          <div>
-            <h1>{qs}</h1>
-          </div>
-        );
-      })}
-      <Ans value={answer} />
+      <h2>Screen</h2>
+      <QuestionSingleMode value={renderQuestion} /> 
+      <AnswerStack/>
+      <button onClick={nextQuestion}>{counter ? "next" : "finish"}</button>
     </div>
   );
 }
 
-function Ans(props) {
+function AnswerStack(props) {
   return (
-    <div>
-      <p>{props.value}</p>
-    </div>
+    <AnswerSingle/>
   );
+}
+
+function AnswerSingle(props){
+  return(
+    <div>
+      <AnswerPhoto />
+      <p>{}</p>
+      <p>{}</p>
+    </div>
+  )
+}
+function AnswerPhoto(){
+  return(
+    <div></div>
+  )
+}
+
+
+function QuestionSingleMode(props){
+  return(
+    <div>
+      <h1>{props.value}</h1>
+      
+    </div>
+  )
 }
