@@ -13,8 +13,9 @@ io.on("connection", (socket) => {
   console.log(`user is connected`);
 
   socket.on("questions", (qValue) => {
-    console.log(JSON.parse(qValue))
-    io.sockets.emit("screenQs", JSON.stringify(JSON.parse(qValue).questions));
+
+    console.log((qValue))
+    io.sockets.emit("screenQs",qValue);
   });
 
   socket.on("answer", (aValue) => {

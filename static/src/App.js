@@ -9,6 +9,7 @@ import Questions from "./components/questions";
 import Answers from "./components/answers";
 import {LoginProvider} from "./context/LoginContext";
 import Screen from './components/screen';
+import Thank from './components/thank'
 
 function App() {
   return (
@@ -25,6 +26,9 @@ function App() {
           </Route>
           <Route path="/mcq">
             <Chooser />
+          </Route>
+          <Route path="/thank">
+            <Thank/>
           </Route>
           <Route path="/mcq/form">
             <Questions />

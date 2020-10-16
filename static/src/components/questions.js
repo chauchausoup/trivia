@@ -35,11 +35,16 @@ export default function Questions() {
 
       console.log(arrayValue); //this value will be going to the screen one by one
       /* to screen */
-      var qValue={
+      console.log(typeof(localStorage.getItem('personalInfo')))
+      var qValue=JSON.stringify({
         "personalInfo":JSON.parse(localStorage.getItem('personalInfo')),
         "questions":arrayValue
-              };
-      socket.emit("questions", JSON.stringify(qValue));
+              });
+              console.log(typeof(qValue))
+              console.log(qValue)
+             
+
+      socket.emit("questions", (qValue));
       
     } else {
       alert("Please login !");

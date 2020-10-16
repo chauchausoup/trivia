@@ -69,6 +69,7 @@ function Tokener() {
   const tokenValidator = () => {
     //it checks if the token is valid or not
     //if the token is valid then it shows
+    //this thing is done in server side
 
     if (tokenArray.includes(value)) {
       setFlag(false);
@@ -81,6 +82,7 @@ function Tokener() {
     /** some input is changed while inserting token */
     setValue(e.target.value);
   };
+  
 
   return (
     <div>
