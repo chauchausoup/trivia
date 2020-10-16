@@ -7,13 +7,16 @@ import HomePage from "./components/homePage";
 import Chooser from "./components/chooser";
 import Questions from "./components/questions";
 import Answers from "./components/answers";
-import {LoginProvider} from "./context/LoginContext";
 import Screen from './components/screen';
 import Thank from './components/thank'
+import { ScreenButtonProvider } from "./context/ScreenButtonContext";
+import {LoginProvider} from "./context/LoginContext";
+
 
 function App() {
   return (
     <LoginProvider>
+      <ScreenButtonProvider>
       <Router>
         <Switch>
           <Route exact path="/">
@@ -38,6 +41,7 @@ function App() {
           </Route>
         </Switch>
       </Router>
+      </ScreenButtonProvider>
     </LoginProvider>
   );
 }

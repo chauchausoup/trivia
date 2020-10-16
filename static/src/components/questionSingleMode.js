@@ -1,12 +1,18 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect,useContext} from 'react'
 import { useHistory } from "react-router-dom";
+import {ScreenButtonContext} from '../context/ScreenButtonContext'
+
 
 export default function QuestionSingleMode(props) {
+    var  [buttonClicked, setButtonClicked] = useContext(ScreenButtonContext);
+    
     var history = useHistory();
     var [questions, setQuestions] = useState([]); //array
     var [counter, setCounter] = useState(0); //integer
+    
   
     useEffect(() => {
+      setButtonClicked(false)
       setQuestions(props.value.questions)
       setCounter(props.value.questions.length)
       console.log("Question chages")
@@ -15,15 +21,15 @@ export default function QuestionSingleMode(props) {
   
   
     function nextQuestion() {
+      setButtonClicked(true)
       console.log("button hit")
       setQuestions(questions.filter((e) => e !==questions[0]));
       console.log(questions)
       setCounter(prev=>--prev);
       console.log(counter)
-      if(counter ==1){
+      if(counter === 1){
         history.push(`/thank/`)
       }
-  
     }
   
   
