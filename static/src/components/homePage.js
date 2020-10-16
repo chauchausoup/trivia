@@ -10,6 +10,7 @@ import "../index.css";
 import Chooser from "./chooser";
 import {Carousel, Button,PageHeader, Layout,Modal} from "antd";
 import Head from "./head";
+import TokenGenerator from "./tokenGenerator";
 
 const {Footer} = Layout;
 
@@ -31,7 +32,8 @@ const HomePage = () => {
   return (
     <div className="homepage">
     <Head/>
-      <Carousel effect="fade" autoplay>
+    <TokenGenerator/>
+      {/* <Carousel effect="fade" autoplay>
         <div>
           <h1 style={contentStyle}>Trivia : Where minds come together...</h1>
         </div>
@@ -41,7 +43,7 @@ const HomePage = () => {
         <div>
           <h1 style={contentStyle}>MCQs</h1>
         </div>
-      </Carousel>
+      </Carousel> */}
 
       <Link to="/mcq">
         <Button id = "btn">MCQ</Button>
