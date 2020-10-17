@@ -7,13 +7,18 @@ import HomePage from "./components/homePage";
 import Chooser from "./components/chooser";
 import Questions from "./components/questions";
 import Answers from "./components/answers";
-import {LoginProvider} from "./context/LoginContext";
 import Screen from './components/screen';
 import Thank from './components/thank'
+import TokenInput from './components/tokenInput';
+
+import { ScreenButtonProvider } from "./context/ScreenButtonContext";
+import {LoginProvider} from "./context/LoginContext";
+
 
 function App() {
   return (
     <LoginProvider>
+      <ScreenButtonProvider>
       <Router>
         <Switch>
           <Route exact path="/">
@@ -24,6 +29,9 @@ function App() {
           <Route path="/screen">
             <Screen/>
           </Route>
+          {/* <Route path="/screen/">
+            <TokenInput/>
+          </Route> */}
           <Route path="/mcq">
             <Chooser />
           </Route>
@@ -38,6 +46,7 @@ function App() {
           </Route>
         </Switch>
       </Router>
+      </ScreenButtonProvider>
     </LoginProvider>
   );
 }

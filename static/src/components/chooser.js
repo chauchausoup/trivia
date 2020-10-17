@@ -25,10 +25,10 @@ function Choose() {
       <Head />
       {localStorage.getItem('setter')? <TokenText/>:<p></p>}
       <p>Please Select a mode.</p>
-      <Link to="/mcq/form">
+      <Link to="/mcq/form"  target="_blank">
         <Button default>Setter</Button>
       </Link>
-      <Link to="/mcq/answer">
+      <Link to="/mcq/answer"  target="_blank">
         <Button default>Answerer</Button>
       </Link>
     </div>

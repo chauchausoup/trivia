@@ -12,9 +12,9 @@ export default function Screen() {
 
   useEffect(() => {
     socket.on("screenAns", (input) => {
-      setAnswer(input);
+      setAnswer(JSON.parse(input));
     });
-    //console.log(aValue);
+    console.log(aValue);
   }, [aValue]);
 
   useEffect(() => {
@@ -28,6 +28,9 @@ export default function Screen() {
       <h2>Screen</h2>
       <QuestionSingleMode value={qValue} />
       <AnswerSingleMode value={aValue}/>
+      
+      
     </div>
   );
 }
+
