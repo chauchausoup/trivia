@@ -1,15 +1,16 @@
 import React, { useState } from "react";
+import { Radio, Input } from 'antd';
+import { useHistory } from "react-router-dom";
+
 
 export default function TokenGenerator() {
+  var history = useHistory();
+
   const [st, setST] = useState("");
   const [at, setAT] = useState("");
   const [maxUsers, setMaxUsers] = useState(0);
-  const [et, setET] = useState({
-    min45: false,
-    hrs2: false,
-    hrs4: false,
-    hrs6: false,
-  });
+  const[etValue,setValue]=useState(1);
+
 
   const handleST = (e) => {
     e.preventDefault();
@@ -23,41 +24,31 @@ export default function TokenGenerator() {
     e.preventDefault();
     setMaxUsers(e.target.value);
   };
-  const handleMin45 = (e) => {
-    e.preventDefault();
-    console.log("45 selected")
-    setET((prevState) => {
-    return { ...prevState,
-      min45: true,
-    }});
+  
+  const onChange = e => {
+    console.log('radio checked', e.target.value);
+    setValue(e.target.value)
   };
 
-  const handleHrs2 = (e) => {
-    e.preventDefault();
-    setET((prevState) => ({
-      ...prevState,
-      hrs2: true,
-    }));
-  };
-  const handleHrs4 = (e) => {
-    e.preventDefault();
-    setET((prevState) => ({
-      ...prevState,
-      hrs4: true,
-    }));
-  };
-  const handleHrs6 = (e) => {
-    e.preventDefault();
-    setET((prevState) => ({
-      ...prevState,
-      hrs6: true,
-    }));
-  };
+    const radioStyle = {
+      display: 'block',
+      height: '30px',
+      lineHeight: '30px',
+    };
 
-  const submitHandler=(e)=>{
+
+    const submitHandler=(e)=>{
       e.preventDefault()
-    console.log(st,at,maxUsers,et)
+      history.push(`/screen/`)
+    console.log(st,at,maxUsers,etValue)
   }
+
+/* 
+WORK_LEFT:
+validating the input fields as per the specifications
+*/
+
+
 
   return (
     <form onSubmit={submitHandler}>
@@ -72,20 +63,30 @@ export default function TokenGenerator() {
       <br />
       <label>Expiry Time:</label>
       <br />
-      <label>45 mins</label>
-      <input type="radio" name="min45" id="min45" onChange={handleMin45} />
+      
+      {/* here comes the antd radio selector */}
+
+      <Radio.Group onChange={onChange} value={etValue}>
+          <Radio style={radioStyle} value={"min45"}>
+            45 minutes
+          </Radio>
+          <Radio style={radioStyle} value={"hrs2"}>
+            2 hrs
+          </Radio>
+          <Radio style={radioStyle} value={"hrs4"}>
+            4 hrs
+          </Radio>
+          <Radio style={radioStyle} value={"hrs6"}>
+            6 hrs
+          </Radio>
+        </Radio.Group>
+
       <br />
-      <label>hrs2</label>
-      <input type="radio" name="hrs2" id="hrs2" onChange={handleHrs2} />
       <br />
-      <label>hrs4</label>
-      <input type="radio" name="hrs4" id="hrs4" onChange={handleHrs4} />
-      <br />
-      <label>hrs6</label>
-      <input type="radio" name="hrs6" id="hrs6" onChange={handleHrs6}  />
-      <br />
-      <br />
-      <input type="submit" value="Submit"/>
+      <input type="submit" value="Lets Go..."/>
     </form>
   );
 }
+
+
+

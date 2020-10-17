@@ -9,6 +9,8 @@ import Questions from "./components/questions";
 import Answers from "./components/answers";
 import Screen from './components/screen';
 import Thank from './components/thank'
+import TokenInput from './components/tokenInput';
+
 import { ScreenButtonProvider } from "./context/ScreenButtonContext";
 import {LoginProvider} from "./context/LoginContext";
 
@@ -27,6 +29,9 @@ function App() {
           <Route path="/screen">
             <Screen/>
           </Route>
+          {/* <Route path="/screen/">
+            <TokenInput/>
+          </Route> */}
           <Route path="/mcq">
             <Chooser />
           </Route>

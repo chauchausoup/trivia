@@ -1,18 +1,13 @@
-import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import React, { useState } from "react";
+
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "antd/dist/antd.css";
 import "../index.css";
-import Chooser from "./chooser";
-import {Carousel, Button,PageHeader, Layout,Modal} from "antd";
-import Head from "./head";
+import { Carousel, Button, PageHeader, Layout, Modal, Drawer } from "antd";
+import Head2 from "./head";
 import TokenGenerator from "./tokenGenerator";
 
-const {Footer} = Layout;
+const { Footer } = Layout;
 
 const contentStyle = {
   height: "60vh",
@@ -22,8 +17,16 @@ const contentStyle = {
   background: "#364d79",
 };
 
-const HomePage = () => {
+export default function HomePage() {
+  const [visible, setVisible] = useState(false);
 
+  function alertCompo() {
+    setVisible(true);
+  }
+
+  const onClose = () => {
+    setVisible(false);
+  };
 
   function handleCommingSoon() {
     alert("Comming Soon... Please try other features...");
@@ -31,47 +34,43 @@ const HomePage = () => {
 
   return (
     <div className="homepage">
-    <Head/>
-    <TokenGenerator/>
-      {/* <Carousel effect="fade" autoplay>
-        <div>
-          <h1 style={contentStyle}>Trivia : Where minds come together...</h1>
-        </div>
-        <div>
-          <h1 style={contentStyle}>Fill ins</h1>
-        </div>
-        <div>
-          <h1 style={contentStyle}>MCQs</h1>
-        </div>
-      </Carousel> */}
+      <Head2 />
+      <Drawer
+        title="Basic Drawer"
+        placement="right"
+        closable={false}
+        onClose={onClose}
+        visible={visible}
+      >
+        <TokenGenerator />
+      </Drawer>
 
-      <Link to="/mcq">
-        <Button id = "btn">MCQ</Button>
-      </Link>
-      <br/>
-      
-      <Button  onClick={handleCommingSoon} id="btn">
-        Fill ins..
+      <Button id="btn" onClick={alertCompo}>
+        Ask Us Anything
       </Button>
-      
-      <br/>
 
-      
-      <Button onClick={handleCommingSoon} id = "btn">
+      <br />
+
+      <Button onClick={handleCommingSoon} id="btn">
+        Quiz
+      </Button>
+
+      <br />
+
+      <Button onClick={handleCommingSoon} id="btn">
         Gengiz Khan
       </Button>
-      
-      
-      <br/>
-      
+
+      <br />
+
       <Layout>
-      <Footer className="site-page-footer" >All rights reserved</Footer>
+        <Footer className="site-page-footer">All rights reserved</Footer>
       </Layout>
     </div>
   );
-};
+}
 
-export default function homePage() {
+/* export default function homePage() {
   return (
     <Router>
       <Switch>
@@ -86,4 +85,4 @@ export default function homePage() {
       </Switch>
     </Router>
   );
-}
+} */
